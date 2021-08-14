@@ -18,16 +18,16 @@ import io.github.dipeshpatil.androidmvvm.model.PostModel;
 public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.PostViewHolder> {
 
     private final Context context;
-    private List<PostModel> moviesList;
+    private List<PostModel> postModelList;
 
-    public PostListAdapter(Context context, List<PostModel> moviesList) {
+    public PostListAdapter(Context context, List<PostModel> postModelList) {
         this.context = context;
-        this.moviesList = moviesList;
+        this.postModelList = postModelList;
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void setMoviesList(List<PostModel> moviesList) {
-        this.moviesList = moviesList;
+    public void setPostModelList(List<PostModel> postModelList) {
+        this.postModelList = postModelList;
         this.notifyDataSetChanged();
     }
 
@@ -40,7 +40,7 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.PostVi
 
     @Override
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
-        PostModel postModel = this.moviesList.get(position);
+        PostModel postModel = this.postModelList.get(position);
 
         holder.titleTextView.setText(postModel.getTitle());
         holder.bodyTextView.setText(postModel.getBody());
@@ -48,8 +48,8 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.PostVi
 
     @Override
     public int getItemCount() {
-        if (this.moviesList != null)
-            return this.moviesList.size();
+        if (this.postModelList != null)
+            return this.postModelList.size();
         return 0;
     }
 

@@ -15,7 +15,7 @@ import io.github.dipeshpatil.androidmvvm.viewmodel.PostListViewModel;
 public class MainActivity extends AppCompatActivity {
 
     private List<PostModel> postModelList;
-    private PostListAdapter movieListAdapter;
+    private PostListAdapter postListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,14 +24,14 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
 
-        movieListAdapter = new PostListAdapter(this, postModelList);
-        recyclerView.setAdapter(movieListAdapter);
+        postListAdapter = new PostListAdapter(this, postModelList);
+        recyclerView.setAdapter(postListAdapter);
 
         PostListViewModel postListViewModel = ViewModelProviders.of(this).get(PostListViewModel.class);
-        postListViewModel.getMoviesListObserver().observe(this, movieModels -> {
-            if (movieModels != null) {
-                postModelList = movieModels;
-                movieListAdapter.setMoviesList(postModelList);
+        postListViewModel.getPostListObserver().observe(this, postModels -> {
+            if (postModels != null) {
+                postModelList = postModels;
+                postListAdapter.setPostModelList(postModelList);
             }
         });
         postListViewModel.makeAPICall();

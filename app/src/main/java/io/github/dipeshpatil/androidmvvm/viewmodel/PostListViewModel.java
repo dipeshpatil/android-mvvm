@@ -18,14 +18,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PostListViewModel extends ViewModel {
-    private final MutableLiveData<List<PostModel>> moviesList;
+    private final MutableLiveData<List<PostModel>> postList;
 
     public PostListViewModel() {
-        moviesList = new MutableLiveData<>();
+        postList = new MutableLiveData<>();
     }
 
-    public MutableLiveData<List<PostModel>> getMoviesListObserver() {
-        return moviesList;
+    public MutableLiveData<List<PostModel>> getPostListObserver() {
+        return postList;
     }
 
     public void makeAPICall() {
@@ -34,7 +34,7 @@ public class PostListViewModel extends ViewModel {
         call.enqueue(new Callback<List<PostModel>>() {
             @Override
             public void onResponse(Call<List<PostModel>> call, Response<List<PostModel>> response) {
-                moviesList.postValue(response.body());
+                postList.postValue(response.body());
                 Log.d("OMDB_RESPONSE:ResponseBody", String.valueOf(response.body()));
             }
 
