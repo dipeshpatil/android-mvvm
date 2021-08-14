@@ -6,9 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import io.github.dipeshpatil.androidmvvm.model.PostModel;
 import io.github.dipeshpatil.androidmvvm.network.APIService;
