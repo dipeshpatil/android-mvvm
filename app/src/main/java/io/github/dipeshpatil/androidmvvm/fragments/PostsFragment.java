@@ -1,4 +1,4 @@
-package io.github.dipeshpatil.androidmvvm;
+package io.github.dipeshpatil.androidmvvm.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import io.github.dipeshpatil.androidmvvm.R;
 import io.github.dipeshpatil.androidmvvm.adapter.PostListAdapter;
 import io.github.dipeshpatil.androidmvvm.model.PostModel;
 import io.github.dipeshpatil.androidmvvm.viewmodel.PostListViewModel;
-
 
 public class PostsFragment extends Fragment {
     private List<PostModel> postModelList;

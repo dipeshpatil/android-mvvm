@@ -33,16 +33,15 @@ public class PostListViewModel extends ViewModel {
             @Override
             public void onResponse(Call<List<PostModel>> call, Response<List<PostModel>> response) {
                 postList.postValue(response.body());
-                Log.d("OMDB_RESPONSE:ResponseBody", String.valueOf(response.body()));
+                Log.d("PostListViewModel:ResponseBody", String.valueOf(response.body()));
             }
 
             @Override
             public void onFailure(Call<List<PostModel>> call, Throwable t) {
-                Log.d("OMDB_RESPONSE:Message", t.getMessage());
-                Log.d("OMDB_RESPONSE:Cause", String.valueOf(t.getCause()));
-                Log.d("OMDB_RESPONSE:StackTrace", Arrays.toString(t.getStackTrace()));
+                Log.d("PostListViewModel:Message", t.getMessage());
+                Log.d("PostListViewModel:Cause", String.valueOf(t.getCause()));
+                Log.d("PostListViewModel:StackTrace", Arrays.toString(t.getStackTrace()));
             }
         });
     }
-
 }

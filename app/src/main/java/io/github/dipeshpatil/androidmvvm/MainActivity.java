@@ -10,10 +10,17 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import io.github.dipeshpatil.androidmvvm.fragments.PhotosFragment;
+import io.github.dipeshpatil.androidmvvm.fragments.PostsFragment;
+import io.github.dipeshpatil.androidmvvm.fragments.TodosFragment;
+
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView mainBottomNavigationView;
+
     private Fragment postsFragment;
+    private Fragment todosFragment;
+    private Fragment photosFragment;
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -24,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         mainBottomNavigationView = findViewById(R.id.bottom_navigation_view_main);
 
         postsFragment = new PostsFragment();
+        todosFragment = new TodosFragment();
+        photosFragment = new PhotosFragment();
 
         // Calling this method to set PostsFragment as default on start
         replaceFragment(postsFragment);
@@ -32,13 +41,12 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.menu_item_posts:
                     replaceFragment(postsFragment);
-                    Toast.makeText(MainActivity.this, "postsFragment", Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.menu_item_images:
-                    Toast.makeText(MainActivity.this, "imagesFragment", Toast.LENGTH_SHORT).show();
+                    replaceFragment(photosFragment);
                     return true;
                 case R.id.menu_item_todos:
-                    Toast.makeText(MainActivity.this, "todosFragment", Toast.LENGTH_SHORT).show();
+                    replaceFragment(todosFragment);
                     return true;
                 case R.id.menu_item_users:
                     Toast.makeText(MainActivity.this, "usersFragment", Toast.LENGTH_SHORT).show();
