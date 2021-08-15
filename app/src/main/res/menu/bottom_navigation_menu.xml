@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_item_posts"
+        android:enabled="true"
+        android:icon="@drawable/baseline_view_day_24"
+        android:title="@string/posts" />
+    <item
+        android:id="@+id/menu_item_todos"
+        android:enabled="true"
+        android:icon="@drawable/baseline_grading_24"
+        android:title="@string/todos" />
+    <item
+        android:id="@+id/menu_item_images"
+        android:enabled="true"
+        android:icon="@drawable/baseline_collections_24"
+        android:title="@string/images" />
+    <item
+        android:id="@+id/menu_item_users"
+        android:enabled="true"
+        android:icon="@drawable/baseline_supervisor_account_24"
+        android:title="@string/users" />
+</menu>

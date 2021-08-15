@@ -1,39 +1,57 @@
 package io.github.dipeshpatil.androidmvvm;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
-import java.util.List;
-
-import io.github.dipeshpatil.androidmvvm.adapter.PostListAdapter;
-import io.github.dipeshpatil.androidmvvm.model.PostModel;
-import io.github.dipeshpatil.androidmvvm.viewmodel.PostListViewModel;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<PostModel> postModelList;
-    private PostListAdapter postListAdapter;
+    private BottomNavigationView mainBottomNavigationView;
+    private Fragment postsFragment;
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        mainBottomNavigationView = findViewById(R.id.bottom_navigation_view_main);
 
-        postListAdapter = new PostListAdapter(this, postModelList);
-        recyclerView.setAdapter(postListAdapter);
+        postsFragment = new PostsFragment();
 
-        PostListViewModel postListViewModel = ViewModelProviders.of(this).get(PostListViewModel.class);
-        postListViewModel.getPostListObserver().observe(this, postModels -> {
-            if (postModels != null) {
-                postModelList = postModels;
-                postListAdapter.setPostModelList(postModelList);
+        // Calling this method to set PostsFragment as default on start
+        replaceFragment(postsFragment);
+
+        mainBottomNavigationView.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.menu_item_posts:
+                    replaceFragment(postsFragment);
+                    Toast.makeText(MainActivity.this, "postsFragment", Toast.LENGTH_SHORT).show();
+                    return true;
+                case R.id.menu_item_images:
+                    Toast.makeText(MainActivity.this, "imagesFragment", Toast.LENGTH_SHORT).show();
+                    return true;
+                case R.id.menu_item_todos:
+                    Toast.makeText(MainActivity.this, "todosFragment", Toast.LENGTH_SHORT).show();
+                    return true;
+                case R.id.menu_item_users:
+                    Toast.makeText(MainActivity.this, "usersFragment", Toast.LENGTH_SHORT).show();
+                    return true;
+                default:
+                    return false;
             }
         });
-        postListViewModel.makeAPICall();
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_layout_main, fragment);
+        transaction.commit();
     }
 }
