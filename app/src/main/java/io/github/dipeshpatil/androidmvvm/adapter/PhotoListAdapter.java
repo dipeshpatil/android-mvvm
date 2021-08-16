@@ -16,6 +16,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import io.github.dipeshpatil.androidmvvm.R;
+import io.github.dipeshpatil.androidmvvm.helpers.Utils;
 import io.github.dipeshpatil.androidmvvm.model.PhotoModel;
 
 public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.PhotoViewHolder> {
@@ -45,7 +46,7 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.Phot
     public void onBindViewHolder(@NonNull PhotoViewHolder holder, int position) {
         PhotoModel photoModel = this.photoModelList.get(position);
 
-        holder.titleTextView.setText(photoModel.getTitle());
+        holder.titleTextView.setText(Utils.convertToTitleCase(photoModel.getTitle()));
         Picasso.get().load(photoModel.getUrl()).into(holder.photoUrlImageView);
     }
 

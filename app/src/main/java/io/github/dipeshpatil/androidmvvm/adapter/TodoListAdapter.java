@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import io.github.dipeshpatil.androidmvvm.R;
+import io.github.dipeshpatil.androidmvvm.helpers.Utils;
 import io.github.dipeshpatil.androidmvvm.model.TodoModel;
 
 public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.TodoViewHolder> {
@@ -47,7 +48,7 @@ public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.TodoVi
         else
             holder.titleTextView.setTextColor(context.getResources().getColor(R.color.error));
 
-        holder.titleTextView.setText(todoModel.getTitle());
+        holder.titleTextView.setText(Utils.convertToTitleCase(todoModel.getTitle()));
     }
 
     @Override

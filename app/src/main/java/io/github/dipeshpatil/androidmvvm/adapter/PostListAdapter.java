@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import io.github.dipeshpatil.androidmvvm.R;
+import io.github.dipeshpatil.androidmvvm.helpers.Utils;
 import io.github.dipeshpatil.androidmvvm.model.PostModel;
 
 public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.PostViewHolder> {
@@ -42,7 +43,7 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.PostVi
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
         PostModel postModel = this.postModelList.get(position);
 
-        holder.titleTextView.setText(postModel.getTitle());
+        holder.titleTextView.setText(Utils.convertToTitleCase(postModel.getTitle()));
         holder.bodyTextView.setText(postModel.getBody());
     }
 
