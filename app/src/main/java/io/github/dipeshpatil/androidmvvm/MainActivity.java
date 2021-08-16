@@ -2,7 +2,6 @@ package io.github.dipeshpatil.androidmvvm;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -13,6 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import io.github.dipeshpatil.androidmvvm.fragments.PhotosFragment;
 import io.github.dipeshpatil.androidmvvm.fragments.PostsFragment;
 import io.github.dipeshpatil.androidmvvm.fragments.TodosFragment;
+import io.github.dipeshpatil.androidmvvm.fragments.UsersFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private Fragment postsFragment;
     private Fragment todosFragment;
     private Fragment photosFragment;
+    private Fragment usersFragment;
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         postsFragment = new PostsFragment();
         todosFragment = new TodosFragment();
         photosFragment = new PhotosFragment();
+        usersFragment = new UsersFragment();
 
         // Calling this method to set PostsFragment as default on start
         replaceFragment(postsFragment);
@@ -49,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(todosFragment);
                     return true;
                 case R.id.menu_item_users:
-                    Toast.makeText(MainActivity.this, "usersFragment", Toast.LENGTH_SHORT).show();
+                    replaceFragment(usersFragment);
                     return true;
                 default:
                     return false;
